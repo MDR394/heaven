@@ -14,8 +14,17 @@ services:
     container_name: backend
     ports:
       - "3000:3000"
-    env_file:
-      - ./server/.env
+    environment:
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongo:27017 # MongoDB connection string
+      - CORS_ORIGIN=*
+      - ACCESS_TOKEN_SECRET=6dMYDk348cufyoXZiJimcp5vfHT4G7HIub5LSiuWJRX8X1SVkZ2U8rdRxYgSvefR
+      - ACCESS_TOKEN_EXPIRY=2d
+      - REFRESH_TOKEN_SECRET=mIJ5HAFIbQWTUqPFF25vc9wD1D4gB5lSfmTFiORZmOwd3LJBo18j8EOoRKKuZAY5
+      - REFRESH_TOKEN_EXPIRY=10d
+      - CLOUDINARY_CLOUD_NAME=dmwtgvbol
+      - CLOUDINARY_API_KEY=335584145389523
+      - CLOUDINARY_API_SECRET=BRKlULivmHJ0rWBAIp8QiZ8Freg
     depends_on:
       - mongo
 
